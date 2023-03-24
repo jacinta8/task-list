@@ -29,6 +29,10 @@ function App() {
     setTasks((prevTasks) => prevTasks.concat(task))
   }
 
+  const deleteTaskHandler = (id) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id))
+  }
+
   return (
     <React.Fragment>
       <NewTask onAddTask={taskAddHandler} />
@@ -37,6 +41,7 @@ function App() {
         loading={isLoading}
         error={error}
         onFetch={fetchTasks}
+        onDelete={deleteTaskHandler}
       />
     </React.Fragment>
   )

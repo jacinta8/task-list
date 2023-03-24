@@ -3,7 +3,7 @@ import TaskItem from "./TaskItem"
 import classes from "./Tasks.module.css"
 
 const Tasks = (props) => {
-  // const [id, setId]=useState("")
+  const onDelete = props.onDelete
 
   let taskList = <h2>No tasks found. Start adding some!</h2>
 
@@ -11,7 +11,9 @@ const Tasks = (props) => {
     taskList = (
       <ul>
         {props.items.map((task) => (
-          <TaskItem key={task.id}>{task.text}</TaskItem>
+          <TaskItem key={task.id} onDelete={onDelete} id={task.id}>
+            {task.text}
+          </TaskItem>
         ))}
       </ul>
     )

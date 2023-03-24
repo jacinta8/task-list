@@ -1,7 +1,22 @@
-import classes from './TaskItem.module.css';
+import classes from "./TaskItem.module.css"
+import useHttp from "../../hook/use-http"
 
 const TaskItem = (props) => {
-  return <li className={classes.task}>{props.children}</li>
-};
+  const { id, onDelete } = props
+  const { sendRequest: deleteTasks } = useHttp()
 
-export default TaskItem;
+  const deleteTask = async () => {
+    await deleteTasks({
+      url: `https://add-tasks-4062b-default-rtdb.firebaseio.com/${id}.json`,
+      method: "DELETE",
+    })
+    onDelete(id)
+  }
+  return (
+    <li className={classes.task} onClick={deleteTask}>
+      {props.children}
+    </li>
+  )
+}
+
+export default TaskItem
