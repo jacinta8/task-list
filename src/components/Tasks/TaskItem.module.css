@@ -3,8 +3,23 @@
   padding: 1rem;
   font-weight: bold;
   font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .task:last-of-type {
   border-bottom: none;
+}
+
+.remove {
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.remove:hover {
+  color: white;
 }

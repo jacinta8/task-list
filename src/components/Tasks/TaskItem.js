@@ -13,8 +13,11 @@ const TaskItem = (props) => {
     onDelete(id)
   }
   return (
-    <li className={classes.task} onClick={deleteTask}>
+    <li className={classes.task}>
       {props.children}
+      <button onClick={deleteTask} className={classes.remove}>
+        Delete
+      </button>
     </li>
   )
 }
