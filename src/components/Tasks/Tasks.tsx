@@ -1,8 +1,22 @@
 import Section from "../UI/Section"
 import TaskItem from "./TaskItem"
 import classes from "./Tasks.module.css"
+import { TaskProps } from "../../App"
+import React from "react"
+import { RequestConfig, ApplyData } from "../../hook"
 
-const Tasks = (props) => {
+type TasksProps = {
+  items: TaskProps[]
+  loading: boolean
+  error: string | null
+  onFetch?: (
+    requestConfig: RequestConfig,
+    applyData: ApplyData
+  ) => Promise<void>
+  onDelete: (id: string) => void
+}
+
+const Tasks = (props: TasksProps) => {
   const onDelete = props.onDelete
 
   let taskList = <h2>No tasks found. Start adding some!</h2>
@@ -19,14 +33,14 @@ const Tasks = (props) => {
     )
   }
 
-  let content = taskList
+  let content: JSX.Element = taskList
 
   if (props.error) {
     content = <button onClick={props.onFetch}>Try again</button>
   }
 
   if (props.loading) {
-    content = "Loading tasks..."
+    content = <p>"Loading tasks..."</p>
   }
 
   return (

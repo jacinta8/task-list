@@ -3,15 +3,21 @@ import useHttp from "./hook/use-http"
 
 import Tasks from "./components/Tasks/Tasks"
 import NewTask from "./components/NewTask/NewTask"
+import { ApplyData } from "./hook"
+
+export type TaskProps = {
+  id: string
+  text: string
+}
 
 function App() {
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState<TaskProps[]>([])
 
   const { isLoading, error, sendRequest: fetchTasks } = useHttp()
 
   useEffect(() => {
-    const fetchData = (data) => {
-      const loadedTasks = []
+    const fetchData: ApplyData = (data: Record<string, TaskProps>) => {
+      const loadedTasks: TaskProps[] = []
 
       for (const taskKey in data) {
         loadedTasks.push({ id: taskKey, text: data[taskKey].text })
@@ -25,11 +31,11 @@ function App() {
     )
   }, [fetchTasks])
 
-  const taskAddHandler = (task) => {
+  const taskAddHandler = (task: TaskProps) => {
     setTasks((prevTasks) => prevTasks.concat(task))
   }
 
-  const deleteTaskHandler = (id) => {
+  const deleteTaskHandler = (id: string) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id))
   }
 

@@ -1,19 +1,24 @@
 import { useRef } from "react"
-
+import React from "react"
 import classes from "./TaskForm.module.css"
 
-const TaskForm = (props) => {
-  const taskInputRef = useRef()
+type TaskFormProps = {
+  onEnterTask: (taskText: string) => Promise<void>
+  loading: boolean
+}
 
-  const submitHandler = (event) => {
+const TaskForm = (props: TaskFormProps) => {
+  const taskInputRef = useRef<HTMLInputElement | null>(null)
+
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const enteredValue = taskInputRef.current.value
+    const enteredValue: string | undefined = taskInputRef.current!.value
 
     if (enteredValue.trim().length > 0) {
       props.onEnterTask(enteredValue)
     }
-    taskInputRef.current.value = ""
+    taskInputRef.current!.value = ""
   }
 
   return (
