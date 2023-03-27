@@ -3,10 +3,10 @@ import TaskForm from "./TaskForm"
 import useHttp from "../../hook/use-http"
 import { TaskProps } from "../../App"
 import React from "react"
-import { RequestConfig, ApplyData } from "../../hook"
+import { ApplyData } from "../../hook/use-http"
 
 type NewTaskProp = {
-  onAddTask: (task: TaskProps) => void
+  onAddTask: (task: { id: string; text: string }) => void
 }
 
 type DataProps = {

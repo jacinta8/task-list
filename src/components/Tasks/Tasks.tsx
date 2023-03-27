@@ -3,17 +3,17 @@ import TaskItem from "./TaskItem"
 import classes from "./Tasks.module.css"
 import { TaskProps } from "../../App"
 import React from "react"
-import { RequestConfig, ApplyData } from "../../hook"
+import { RequestConfig, ApplyData } from "../../hook/use-http"
 
 type TasksProps = {
-  items: TaskProps[]
+  items: TaskProps
   loading: boolean
   error: string | null
   onFetch?: (
     requestConfig: RequestConfig,
     applyData: ApplyData
   ) => Promise<void>
-  onDelete: (id: string) => void
+  onDelete: ApplyData
 }
 
 const Tasks = (props: TasksProps) => {
@@ -36,7 +36,7 @@ const Tasks = (props: TasksProps) => {
   let content: JSX.Element = taskList
 
   if (props.error) {
-    content = <button onClick={props.onFetch}>Try again</button>
+    content = <button onClick={() => props.onFetch}>Try again</button>
   }
 
   if (props.loading) {

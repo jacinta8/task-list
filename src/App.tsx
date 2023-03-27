@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react"
-import useHttp from "./hook/use-http"
+import useHttp, { ApplyData } from "./hook/use-http"
 
 import Tasks from "./components/Tasks/Tasks"
 import NewTask from "./components/NewTask/NewTask"
-import { ApplyData } from "./hook"
 
 export type TaskProps = {
   id: string
   text: string
-}
+}[]
 
 function App() {
-  const [tasks, setTasks] = useState<TaskProps[]>([])
+  const [tasks, setTasks] = useState<TaskProps>([])
 
   const { isLoading, error, sendRequest: fetchTasks } = useHttp()
 
   useEffect(() => {
-    const fetchData: ApplyData = (data: Record<string, TaskProps>) => {
-      const loadedTasks: TaskProps[] = []
-
+    const fetchData: ApplyData = (data: TaskProps) => {
+      const loadedTasks: TaskProps = []
+      console.log("data", data)
       for (const taskKey in data) {
         loadedTasks.push({ id: taskKey, text: data[taskKey].text })
       }
