@@ -16,7 +16,7 @@ const TaskItem = (props: TaskItemProps) => {
   const deleteTask = async () => {
     await deleteTasks(
       {
-        url: `https://add-tasks-4062b-default-rtdb.firebaseio.com/${id}.json`,
+        url: `https://add-tasks-4062b-default-rtdb.firebaseio.com/task${id}.json`,
         method: "DELETE",
       },
       () => onDelete(id)

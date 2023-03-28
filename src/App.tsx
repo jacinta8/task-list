@@ -25,7 +25,7 @@ function App() {
       setTasks(loadedTasks)
     }
     fetchTasks(
-      { url: "https://add-tasks-4062b-default-rtdb.firebaseio.com/.json" },
+      { url: "https://add-tasks-4062b-default-rtdb.firebaseio.com/task.json" },
       fetchData
     )
   }, [fetchTasks])

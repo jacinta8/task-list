@@ -6,7 +6,7 @@ import React from "react"
 import { ApplyData } from "../../hook/use-http"
 
 type NewTaskProp = {
-  onAddTask: (task: { id: string; text: string }) => void
+  onAddTask: (tasks: TaskProps) => void
 }
 
 type DataProps = {
@@ -25,7 +25,7 @@ const NewTask = (props: NewTaskProp) => {
 
     sendTask(
       {
-        url: "https://add-tasks-4062b-default-rtdb.firebaseio.com/.json",
+        url: "https://add-tasks-4062b-default-rtdb.firebaseio.com/task.json",
         method: "POST",
         body: { text: taskText },
         headers: {
