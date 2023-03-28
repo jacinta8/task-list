@@ -7,17 +7,17 @@ import NewTask from "./components/NewTask/NewTask"
 export type TaskProps = {
   id: string
   text: string
-}[]
+}
 
 function App() {
-  const [tasks, setTasks] = useState<TaskProps>([])
+  const [tasks, setTasks] = useState<TaskProps[]>([])
 
   const { isLoading, error, sendRequest: fetchTasks } = useHttp()
 
   useEffect(() => {
-    const fetchData: ApplyData = (data: TaskProps) => {
-      const loadedTasks: TaskProps = []
-      console.log("data", data)
+    const fetchData: ApplyData = (data: TaskProps[]) => {
+      const loadedTasks: TaskProps[] = []
+
       for (const taskKey in data) {
         loadedTasks.push({ id: taskKey, text: data[taskKey].text })
       }

@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react"
-import { TaskProps } from "../App"
 
 export type RequestConfig = {
   url: string
@@ -8,7 +7,7 @@ export type RequestConfig = {
   headers?: Record<string, string>
 }
 
-export type ApplyData = (data: TaskProps | string) => Promise<void>
+export type ApplyData = (data: any) => void
 
 const useHttp = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)

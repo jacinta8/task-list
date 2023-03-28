@@ -2,11 +2,11 @@ import Section from "../UI/Section"
 import TaskItem from "./TaskItem"
 import classes from "./Tasks.module.css"
 import { TaskProps } from "../../App"
-import React from "react"
+
 import { RequestConfig, ApplyData } from "../../hook/use-http"
 
 type TasksProps = {
-  items: TaskProps
+  items: TaskProps[]
   loading: boolean
   error: string | null
   onFetch?: (

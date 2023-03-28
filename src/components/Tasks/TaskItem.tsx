@@ -3,7 +3,6 @@ import useHttp from "../../hook/use-http"
 import { ApplyData } from "../../hook/use-http"
 
 type TaskItemProps = {
-  key: string
   onDelete: ApplyData
 
   id: string
