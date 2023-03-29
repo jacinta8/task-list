@@ -18,6 +18,7 @@ const useHttp = () => {
       setIsLoading(true)
       setError(null)
       try {
+        console.log("@@@@@@@@@@@@@ 1")
         const response = await fetch(requestConfig.url, {
           method: requestConfig.method ? requestConfig.method : "get",
           body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
@@ -28,6 +29,7 @@ const useHttp = () => {
           throw new Error("Request failed!")
         }
         const data = await response.json()
+        console.log("@@@@@@@@@@@@@ 2")
         applyData(data)
       } catch (err: any) {
         setError(err.message || "Something went wrong!")

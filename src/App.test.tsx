@@ -5,7 +5,7 @@ import {
   findAllByRole,
 } from "@testing-library/react"
 import App from "./App"
-import user from "@testing-library/user-event"
+// import user from "@testing-library/user-event"
 
 describe("Tasks", () => {
   test("fetch a list of tasks", async () => {
